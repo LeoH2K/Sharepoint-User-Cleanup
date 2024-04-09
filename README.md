@@ -39,7 +39,7 @@ Install-Module Microsoft.Graph -Scope CurrentUser
 2. **Clone the Repository**: Download the script files to your local environment.
 
     ```bash
-    git clone https://github.com/yourrepository/KeepitCleanupScript.git
+    git clone https://github.com/LeoH2K/Sharepoint-User-Cleanup.git
     ```
 
 3. **Script Configuration**: Edit the script to include your specific M365 tenant details (`$TenantURL`, `$ClientID`, `$ThumbPrint`, `$Tenant`, `$TenantID`).
