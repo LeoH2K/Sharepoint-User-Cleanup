@@ -70,7 +70,6 @@ function Get-UnifiedGroups {
 # User Cleanup Functions
 function Remove-DisabledUsersFromSites {
     param(
-        [object]$Sites,
         [object]$ShareUserIDs,
         [string]$ClientID,
         [string]$ThumbPrint,
@@ -78,7 +77,6 @@ function Remove-DisabledUsersFromSites {
     )
     $Sites | ForEach-Object {
         Write-host "Searching in Site Collection:"$_.URL -f Yellow
-        Connect-PnPOnline -Url $_.URL -ClientId $ClientID -Thumbprint $ThumbPrint -Tenant $Tenant
         $SiteUsers = Get-PnPUser
         foreach ($ShareUserID in $ShareUserIDs) {
             foreach ($SiteUser in $SiteUsers) {
@@ -124,5 +122,5 @@ $Sites = Get-Sites -TenantURL $TenantURL
 $ShareUserIDs = Get-DisabledUsers
 $UnifiedGroups = Get-UnifiedGroups
 
-Remove-DisabledUsersFromSites -Sites $Sites -ShareUserIDs $ShareUserIDs -ClientID $ClientID -ThumbPrint $ThumbPrint -Tenant $Tenant
+Remove-DisabledUsersFromSites -ShareUserIDs $ShareUserIDs -ClientID $ClientID -ThumbPrint $ThumbPrint -Tenant $Tenant
 Remove-DisabledUsersFromUnifiedGroups -UnifiedGroups $UnifiedGroups -UserIDs $UserIDs
