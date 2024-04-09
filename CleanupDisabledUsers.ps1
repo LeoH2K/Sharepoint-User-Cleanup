@@ -63,7 +63,7 @@ function Get-DisabledUsers {
 function Get-UnifiedGroups {
     $Groups = @(Get-MgGroup -all -Property DisplayName,ID,Grouptypes,Members)
     return $Groups | where {
-        $_.GroupTypes -eq 'Unified' -and $_.ID -ne '99d40beb-35f9-4f50-9349-b53a65f58dc6'
+        $_.GroupTypes -eq 'Unified'
     }
 }
 
